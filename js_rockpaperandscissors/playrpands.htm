@@ -1,0 +1,58 @@
+<html>
+<body>
+<script>
+
+
+  const SCISSOR = "scissor"
+  const ROCK    = "rock"
+  const PAPER   = "paper"
+
+  // incude some unit test there to
+  function revalueSelection(selection){
+    switch (selection) {
+      case ROCK:
+        return 0
+        break;
+      case PAPER:
+        return 1
+        break;
+      case SCISSOR:
+        return 2
+        break;
+      default: console.log("switch out")
+    }
+
+    return 1
+  }
+
+  function computerPlay(){
+    return SCISSOR
+  }
+  function playRound(playerSelection, computerSelection) {
+    //Create the result matrix
+    const matrix = new Array([null,true,false],
+                             [false,null,true],
+                             [true,false,null]
+    );
+
+    var playerNumSel    = revalueSelection(playerSelection);
+    var computerNumSel  = revalueSelection(computerSelection);
+    var result = matrix[playerNumSel][computerNumSel];
+    var s="no result"
+    if(result===null) s="player eq computer"
+    else if (result) s="player win ! "
+        else s="computer win ! grrr"
+    return s;
+  }
+
+  function game(){
+    const playerSelection = ROCK
+    const computerSelection = computerPlay()
+    console.log(playRound(playerSelection, computerSelection))
+  }
+  game()
+
+</script>
+
+</body>
+</html>
